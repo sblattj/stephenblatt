@@ -43,6 +43,12 @@
 			});
 		} else {
 
+			// Fix for Safari: add transform: translateZ(0) to fix shakes
+			var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+			if (isSafari) {
+				document.documentElement.style.transform = 'translateZ(0)';
+			}
+
 			breakpoints.on('<=small', function() {
 				$body.addClass('is-touch');
 			});
